@@ -1,5 +1,5 @@
-from aws_cdk import core
-from aws_cdk import aws_cloudhsmv2 as cloudhsm
+import * as cdk from '@aws-cdk/core';
+import * as cloudhsm from '@aws-cdk/aws-cloudhsm';
 
 class CloudHSMStack(core.Stack):
 
@@ -9,9 +9,8 @@ class CloudHSMStack(core.Stack):
         # Create the CloudHSM cluster
         hsm_cluster = cloudhsm.CfnCluster(
             self, "HSMCluster",
-            subnet_ids=["subnet-123456", "subnet-789012"],
+            subnet_ids=["subnet-0077f949769d577ef", "subnet-0211a648cd5b639b2"],
             hsm_type="hsm1.medium",
-            source_backup_id="backup-123456",
             tags=[core.CfnTag(key="Name", value="MyHSMCluster")],
         )
 
@@ -19,7 +18,7 @@ class CloudHSMStack(core.Stack):
         hsm_client = cloudhsm.CfnClient(
             self, "HSMClient",
             cluster_id=hsm_cluster.ref,
-            subnet_ids=["subnet-123456"],
+            subnet_ids=["subnet-0388ccfadab0b09fe"],
             tags=[core.CfnTag(key="Name", value="MyHSMClient")],
         )
 
