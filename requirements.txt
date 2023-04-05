@@ -1,2 +1,3 @@
 aws-cdk-lib
 aws-cdk.aws-cloudhsmv2
+boto3
