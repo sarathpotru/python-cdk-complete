@@ -1,0 +1,13 @@
+metadata:
+  name: "ALB Name Prefix"
+  category: "AWS"
+
+checks:
+  - id: "CKV_AWS_001"
+    name: "Ensure Application Load Balancer name starts with 'dev'"
+    resource_types:
+      - aws_lb
+    check_type: "CUSTOM"
+    check_text: "The Application Load Balancer name should start with 'dev'"
+    condition: "not resource['name'].startswith('dev')"
+    remediation_steps: "Update the Application Load Balancer name to start with 'dev'"
